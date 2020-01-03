@@ -192,6 +192,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\Captain.jpg" />
+    <Content Include="images\download.jfif" />
+    <Content Include="images\superheroes.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\_bootswatch.scss" />
