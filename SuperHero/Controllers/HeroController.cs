@@ -24,7 +24,7 @@ namespace SuperHero.Controllers
         public ActionResult Details(int id)
         {
             Hero hero = context.Heroes.Where(h => h.Id == id).FirstOrDefault();
-            return View();
+            return View(hero);
         }
         
 
