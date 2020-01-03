@@ -26,6 +26,8 @@ namespace SuperHero.Controllers
             Hero hero = context.Heroes.Where(h => h.Id == id).FirstOrDefault();
             return View();
         }
+        
+
 
         // GET: Hero/Create
         public ActionResult Create()
@@ -50,12 +52,29 @@ namespace SuperHero.Controllers
                 return View();
             }
         }
+        public ActionResult List()
+        {
+            List<Hero> heroList = context.Heroes.ToList();
+            return View(heroList);
+        }
 
+        [HttpPost]
+        public ActionResult List(List<Hero> heroList)
+        {
+            try
+            {
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
         // GET: Hero/Edit/5
         public ActionResult Edit(int id)
         {
             Hero hero = context.Heroes.Where(h => h.Id == id).First();
-            return View();
+            return View(hero);
         }
 
         // POST: Hero/Edit/5
@@ -69,7 +88,7 @@ namespace SuperHero.Controllers
                 context.Heroes.Remove(context.Heroes.FirstOrDefault(h => h.Id == hero.Id));
                 context.Heroes.Add(hero);
                 context.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("List");
             }
             catch
             {
@@ -93,7 +112,7 @@ namespace SuperHero.Controllers
                 // TODO: Add delete logic here
                 context.Heroes.Remove(context.Heroes.FirstOrDefault(h => h.Id == hero.Id));
                 context.SaveChanges();
-                return RedirectToAction("Delete");
+                return RedirectToAction("List");
             }
             catch
             {
